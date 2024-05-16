@@ -30,11 +30,25 @@ app.get("/getPPUID", async (req, res) => {
 
 app.get("/getChampList", async (req, res) => {
   const { puuid } = req.query;
-  console.log(puuid);
 
   try {
     const response = await fetch(
       `https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${puuid}?api_key=${process.env.API_KEY}`
+    );
+    const data = await response.json();
+
+    res.send(data);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.get("/getSummonerInfo", async (req, res) => {
+  const { puuid } = req.query;
+
+  try {
+    const response = await fetch(
+      `https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${puuid}?api_key=${process.env.API_KEY}`
     );
     const data = await response.json();
 
