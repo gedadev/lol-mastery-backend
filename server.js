@@ -13,7 +13,7 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.get("/getPPUID", async (req, res) => {
+app.get("/getPUUID", async (req, res) => {
   const { name, tag } = req.query;
 
   try {
