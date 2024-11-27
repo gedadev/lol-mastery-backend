@@ -8,6 +8,7 @@ app.use(cors());
 app.get("/", async (req, res) => {
   try {
     res.send(`deployment successful ${process.env.TEST}`);
+    console.log(process.env);
   } catch (error) {
     console.log(error);
   }
