@@ -7,8 +7,7 @@ app.use(cors());
 
 app.get("/", async (req, res) => {
   try {
-    res.send(`deployment successful ${process.env.TEST}`);
-    console.log(process.env);
+    res.send(`deployment successful`);
   } catch (error) {
     console.log(error);
   }
@@ -116,6 +115,15 @@ app.get("/getTopPlayers", async (req, res) => {
     const data = await getPlayerAccount(playersInfo);
 
     res.send(data);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.get("/getAssets", (_, res) => {
+  const URL = process.env.BUCKET_URL;
+  try {
+    res.send(URL);
   } catch (error) {
     console.log(error);
   }
